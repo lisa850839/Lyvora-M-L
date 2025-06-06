@@ -284,27 +284,6 @@ export default function LyvoraLanding() {
             </div>
 
             <div className="flex items-center space-x-6">
-              <nav className="hidden md:flex items-center space-x-6">
-                <a
-                  href="#features"
-                  className="text-gray-300 hover:text-purple-400 transition-all duration-300 hover:scale-105 animate-fade-in-delay-1"
-                >
-                  Features
-                </a>
-                <a
-                  href="#how-it-works"
-                  className="text-gray-300 hover:text-purple-400 transition-all duration-300 hover:scale-105 animate-fade-in-delay-2"
-                >
-                  How It Works
-                </a>
-                <a
-                  href="#roadmap"
-                  className="text-gray-300 hover:text-purple-400 transition-all duration-300 hover:scale-105 animate-fade-in-delay-3"
-                >
-                  Roadmap
-                </a>
-              </nav>
-
               <Button
                 onClick={() => scrollToSection("waitlist")}
                 className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 animate-pulse-glow hover:scale-105 transition-all duration-300"
