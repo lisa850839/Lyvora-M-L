@@ -39,6 +39,7 @@ export default function LyvoraLanding() {
   const [email, setEmail] = useState("")
   const [profile, setProfile] = useState("")
   const [country, setCountry] = useState("")
+  const [otherCountry, setOtherCountry] = useState("")
   const [expectations, setExpectations] = useState("")
 
   const [showScrollTop, setShowScrollTop] = useState(false)
@@ -121,8 +122,8 @@ export default function LyvoraLanding() {
       pulseSpeed: number
 
       constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
+        this.x = Math.random() * (canvas?.width || 0)
+        this.y = Math.random() * (canvas?.height || 0)
         this.size = Math.random() * 3 + 1
         this.speedX = (Math.random() - 0.5) * 0.5
         this.speedY = (Math.random() - 0.5) * 0.5
@@ -137,10 +138,10 @@ export default function LyvoraLanding() {
         this.y += this.speedY
         this.pulse += this.pulseSpeed
 
-        if (this.x > canvas.width) this.x = 0
-        if (this.x < 0) this.x = canvas.width
-        if (this.y > canvas.height) this.y = 0
-        if (this.y < 0) this.y = canvas.height
+        if (this.x > (canvas?.width || 0)) this.x = 0
+        if (this.x < 0) this.x = (canvas?.width || 0)
+        if (this.y > (canvas?.height || 0)) this.y = 0
+        if (this.y < 0) this.y = (canvas?.height || 0)
       }
 
       draw() {
@@ -315,7 +316,7 @@ export default function LyvoraLanding() {
         </header>
 
         {/* Hero Section */}
-        <section className="pt-32 pb-20 px-4" data-animate id="hero">
+        <section className="pt-32 pb-20 px-4 min-h-screen flex items-center justify-center" data-animate id="hero">
           <div className="container mx-auto text-center">
             <Badge
               className={`mb-6 bg-purple-500/20 text-purple-300 border-purple-500/50 px-4 py-2 animate-float ${visibleSections.has("hero") ? "animate-fade-in-up" : "opacity-0"}`}
@@ -378,386 +379,6 @@ export default function LyvoraLanding() {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-20 px-4" data-animate id="faq">
-          <div className="container mx-auto max-w-4xl">
-            <div className={`space-y-4 ${visibleSections.has("faq") ? "animate-stagger-in" : "opacity-0"}`}>
-              <FAQItem
-                question="How Lyvora Makes Money"
-                answer="Lyvora charges a transparent 2.5% transaction fee. No subscriptions. No withdrawal fees. No hidden costs. This model is sustainable, fair, and designed to grow with the community — keeping more value with users."
-                delay="0s"
-              />
-              <FAQItem
-                question="Why Lyvora?"
-                answer="Traditional marketplaces control your business, charge excessive fees, block accounts, and hold your money. Lyvora puts power back into the hands of users — with crypto payments, smart contracts, and global borderless commerce. No middlemen. No restrictions. Full transparency on-chain."
-                delay="0.2s"
-              />
-              <FAQItem
-                question="Security & Trust"
-                answer="Funds are secured through smart contract escrow. Payments are only released when the buyer confirms delivery. On-chain reputation protects both buyers and sellers — with transparent history and no possibility of censorship, account freezing, or scams. No centralized entity can hold your money hostage. Trust is built with code, not with intermediaries."
-                delay="0.4s"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Features Grid */}
-        <section id="features" className="py-20 px-4 bg-gradient-to-b from-transparent to-purple-900/10" data-animate>
-          <div className="container mx-auto">
-            <h2
-              className={`text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent ${visibleSections.has("features") ? "animate-title-reveal" : "opacity-0"}`}
-            >
-              Revolutionary Features
-            </h2>
-
-            <div
-              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ${visibleSections.has("features") ? "animate-grid-appear" : "opacity-0"}`}
-            >
-              <FeatureCard
-                icon={Shield}
-                title="Protection Against Mistakes"
-                description="No accidental clicks. No rushed confirmations. Multiple confirmations required for releasing funds or opening disputes."
-                features={[
-                  "Checkboxes for confirmation",
-                  "Clear warnings for final actions",
-                  "Protection from pressure and scams",
-                ]}
-                color="red"
-                delay="0s"
-              />
-
-              <FeatureCard
-                icon={Globe}
-                title="Buyer Freedom — You Choose Who You Buy From"
-                description="Buy locally (faster delivery, no import taxes) or globally (accept possible import fees and shipping times). Total freedom. You decide."
-                features={["Local and global options", "Transparent shipping costs", "Complete buyer control"]}
-                color="green"
-                delay="0.1s"
-              />
-
-              <FeatureCard
-                icon={MessageSquare}
-                title="In-App Chat — Everything Happens Inside Lyvora"
-                description="All communication happens inside the platform. No external apps needed. Chats are encrypted and stored on-chain."
-                features={["Encrypted communications", "On-chain storage", "Dispute evidence ready"]}
-                color="blue"
-                delay="0.2s"
-              />
-
-              <FeatureCard
-                icon={Coins}
-                title="100% Crypto Payments — 100% On-Chain"
-                description="Payments happen only inside Lyvora, using crypto. Funds stay locked in smart contracts until delivery confirmation."
-                features={["No external wallets needed", "Smart contract protection", "Automatic escrow system"]}
-                color="yellow"
-                delay="0.3s"
-              />
-
-              <FeatureCard
-                icon={Zap}
-                title="Gas Fees — Explained"
-                description="Every blockchain transaction has a gas fee that goes to validators/miners, not Lyvora. A small price for freedom."
-                features={["Transparent fee structure", "Network security costs", "No hidden charges"]}
-                color="purple"
-                delay="0.4s"
-              />
-
-              <FeatureCard
-                icon={BookOpen}
-                title="Education Hub — Learn Everything"
-                description="Full Education Hub with multilingual courses covering everything from buying to dispute resolution."
-                features={["How to buy and sell", "Wallet and crypto guides", "Multi-language support"]}
-                color="pink"
-                delay="0.5s"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* How It Works */}
-        <section id="how-it-works" className="py-20 px-4" data-animate>
-          <div className="container mx-auto">
-            <h2
-              className={`text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent ${visibleSections.has("how-it-works") ? "animate-title-reveal" : "opacity-0"}`}
-            >
-              How Lyvora Works
-            </h2>
-
-            <div
-              className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 ${visibleSections.has("how-it-works") ? "animate-work-cards" : "opacity-0"}`}
-            >
-              <WorkCard
-                icon={Target}
-                title="A Decentralized Marketplace. No Middlemen. No Banks. No Borders. No Censorship."
-                description="Lyvora is a decentralized marketplace for real-world products. You buy and sell using cryptocurrencies. Your payments are protected by smart contract escrow. Your reputation is public, immutable, and fully on-chain."
-                highlight="The control is not in the hands of companies, banks, or governments. It's in YOUR hands."
-                color="purple"
-                delay="0s"
-              />
-
-              <WorkCard
-                icon={Lock}
-                title="Security & Escrow — Protected by Code"
-                description="Every transaction is protected by smart contract escrow. When a purchase is made, funds are locked in the contract. No one can touch the funds — not the seller, not the platform, not even the buyer."
-                highlight="Funds are released only when the buyer confirms the product was received as agreed."
-                color="yellow"
-                delay="0.2s"
-              />
-
-              <WorkCard
-                icon={Scale}
-                title="Fast Dispute System — No Bureaucracy, No Delays"
-                description="Disputes are resolved in hours — maximum 1 day. Both buyer and seller submit evidence. Funds stay locked until dispute is resolved."
-                highlight="All processes are transparent, public, and fully on-chain."
-                color="blue"
-                delay="0.4s"
-              />
-
-              <WorkCard
-                icon={AlertTriangle}
-                title="Fraud Prevention — It Simply Doesn't Pay"
-                description="Tried to scam as a seller? You lose the dispute, don't get paid, and get a permanent on-chain negative reputation. Tried to scam as a buyer? Funds go to the seller and you get flagged."
-                highlight="At Lyvora, fraud is simply not worth it."
-                color="red"
-                delay="0.6s"
-              />
-            </div>
-
-            <div
-              className={`grid grid-cols-1 md:grid-cols-2 gap-8 ${visibleSections.has("how-it-works") ? "animate-work-cards-delayed" : "opacity-0"}`}
-            >
-              <WorkCard
-                icon={Eye}
-                title="Transparent Security — Trust Code, Not People"
-                description="All Lyvora smart contracts are open-source, public, and auditable. Anyone can verify the code. Code doesn't lie, freeze, censor, or steal."
-                highlight="It just executes — fairly, transparently, immutably."
-                color="green"
-                delay="0.8s"
-              />
-
-              <WorkCard
-                icon={Rocket}
-                title="Roadmap & Future"
-                description="DAO Launch for decentralized governance. Token Launch for staking and incentives. NFT-Based Reputation system. Built-in DEX for crypto swapping."
-                highlight="Continuous improvements to the dispute system — smarter, faster, fully automated."
-                color="pink"
-                delay="1s"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Important Notice */}
-        <section
-          className="py-16 px-4 bg-gradient-to-r from-amber-900/20 to-red-900/20 border-y border-amber-500/30"
-          data-animate
-          id="notice"
-        >
-          <div className="container mx-auto text-center">
-            <div
-              className={`flex items-center justify-center mb-4 ${visibleSections.has("notice") ? "animate-warning-pulse" : "opacity-0"}`}
-            >
-              <AlertTriangle className="w-8 h-8 text-amber-400 mr-3 animate-warning-icon" />
-              <h3 className="text-2xl font-bold text-amber-400">Important — Full Protection Only Inside Lyvora</h3>
-            </div>
-            <p
-              className={`text-lg text-gray-300 mb-4 ${visibleSections.has("notice") ? "animate-fade-in-up" : "opacity-0"}`}
-            >
-              All payments, negotiations, and deals happen inside the platform.
-            </p>
-            <p
-              className={`text-lg text-gray-300 mb-4 ${visibleSections.has("notice") ? "animate-fade-in-up-delay" : "opacity-0"}`}
-            >
-              If you pay outside Lyvora — you are not protected.
-            </p>
-            <p
-              className={`text-lg font-semibold text-white ${visibleSections.has("notice") ? "animate-fade-in-up-delay-2" : "opacity-0"}`}
-            >
-              Only Lyvora offers escrow, dispute resolution, on-chain reputation, and real security.
-            </p>
-          </div>
-        </section>
-
-        {/* Global Access */}
-        <section className="py-20 px-4" data-animate id="global">
-          <div className="container mx-auto text-center">
-            <div
-              className={`flex items-center justify-center mb-6 ${visibleSections.has("global") ? "animate-global-appear" : "opacity-0"}`}
-            >
-              <Globe className="w-12 h-12 text-cyan-400 mr-4 animate-globe-spin" />
-              <h2 className="text-4xl font-bold text-cyan-400">Global Since Day One</h2>
-            </div>
-            <p
-              className={`text-xl text-gray-300 mb-8 ${visibleSections.has("global") ? "animate-fade-in-up" : "opacity-0"}`}
-            >
-              No borders. No restrictions. No bureaucracy.
-            </p>
-            <p
-              className={`text-lg text-gray-300 mb-4 ${visibleSections.has("global") ? "animate-fade-in-up-delay" : "opacity-0"}`}
-            >
-              If you have a wallet — you have a store. You have a business. You have freedom.
-            </p>
-            <p
-              className={`text-2xl font-bold text-white ${visibleSections.has("global") ? "animate-fade-in-up-delay-2" : "opacity-0"}`}
-            >
-              This is the future of commerce.
-            </p>
-          </div>
-        </section>
-
-        {/* The System Ends Here */}
-        <section className="py-20 px-4 bg-gradient-to-b from-transparent to-green-900/10" data-animate id="system">
-          <div className="container mx-auto text-center">
-            <div
-              className={`flex items-center justify-center mb-6 ${visibleSections.has("system") ? "animate-flame-appear" : "opacity-0"}`}
-            >
-              <Flame className="w-12 h-12 text-green-400 mr-4 animate-flame-flicker" />
-              <h2 className="text-4xl md:text-5xl font-bold text-green-400">
-                The System They've Always Taken From You — Ends Here.
-              </h2>
-            </div>
-            <p
-              className={`text-xl text-gray-300 mb-8 ${visibleSections.has("system") ? "animate-fade-in-up" : "opacity-0"}`}
-            >
-              You work. You sell. You create. And yet:
-            </p>
-            <div
-              className={`max-w-3xl mx-auto text-left space-y-4 mb-12 ${visibleSections.has("system") ? "animate-list-appear" : "opacity-0"}`}
-            >
-              <div className="flex items-start animate-list-item">
-                <div className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse"></div>
-                <p className="text-gray-300">
-                  Platforms take absurd fees, control your business, freeze your money, and block your account.
-                </p>
-              </div>
-              <div className="flex items-start animate-list-item" style={{ animationDelay: "0.2s" }}>
-                <div className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse"></div>
-                <p className="text-gray-300">
-                  Banks charge you for everything, hold your money, and decide what you can do with it.
-                </p>
-              </div>
-              <div className="flex items-start animate-list-item" style={{ animationDelay: "0.4s" }}>
-                <div className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse"></div>
-                <p className="text-gray-300">
-                  Governments create borders, impose restrictions, and limit your freedom to trade.
-                </p>
-              </div>
-              <div className="flex items-start animate-list-item" style={{ animationDelay: "0.6s" }}>
-                <div className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse"></div>
-                <p className="text-gray-300">
-                  Payment processors take their cut, delay your money, and can shut you down anytime.
-                </p>
-              </div>
-            </div>
-            <p
-              className={`text-2xl font-bold text-white mb-8 ${visibleSections.has("system") ? "animate-fade-in-up-delay" : "opacity-0"}`}
-            >
-              Enough. The future is decentralized. The future is Lyvora.
-            </p>
-            <Button
-              size="lg"
-              onClick={() => scrollToSection("waitlist")}
-              className={`bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 px-8 py-4 text-lg animate-pulse-glow hover:scale-105 transition-all duration-300 ${visibleSections.has("system") ? "animate-button-emerge" : "opacity-0"}`}
-            >
-              Break Free Now
-              <ArrowRight className="ml-2 h-5 w-5 animate-arrow-move" />
-            </Button>
-          </div>
-        </section>
-
-        {/* Enhanced Roadmap Section */}
-        <section
-          id="roadmap"
-          className="py-20 px-4 bg-gradient-to-b from-transparent to-purple-900/10 relative overflow-hidden"
-          data-animate
-        >
-          <div className="container mx-auto">
-            <h2
-              className={`text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent ${visibleSections.has("roadmap") ? "animate-title-reveal" : "opacity-0"}`}
-            >
-              Roadmap
-            </h2>
-
-            <div className="max-w-6xl mx-auto">
-              <div className="relative">
-                {/* Enhanced Timeline line with animation */}
-                <div
-                  className={`absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-cyan-500 ${visibleSections.has("roadmap") ? "animate-timeline-draw" : "opacity-0"}`}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-b from-purple-500 via-pink-500 to-cyan-500 animate-timeline-glow"></div>
-                </div>
-
-                {/* Floating particles along timeline */}
-                <div
-                  className={`absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full ${visibleSections.has("roadmap") ? "animate-particles-float" : "opacity-0"}`}
-                >
-                  <div className="absolute top-1/4 w-2 h-2 bg-purple-400 rounded-full animate-particle-1"></div>
-                  <div className="absolute top-1/2 w-1 h-1 bg-pink-400 rounded-full animate-particle-2"></div>
-                  <div className="absolute top-3/4 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-particle-3"></div>
-                </div>
-
-                {/* Timeline items with enhanced animations */}
-                <div className="space-y-32">
-                  <RoadmapItem
-                    phase="Phase 1: Q3 2024"
-                    title="Platform Launch"
-                    items={[
-                      "Beta marketplace release",
-                      "Initial smart contract deployment",
-                      "Basic escrow functionality",
-                      "Waitlist onboarding",
-                    ]}
-                    position="left"
-                    delay="0s"
-                    isVisible={visibleSections.has("roadmap")}
-                  />
-
-                  <RoadmapItem
-                    phase="Phase 2: Q4 2024"
-                    title="DAO Launch"
-                    items={[
-                      "Decentralized governance implementation",
-                      "Community voting system",
-                      "Enhanced dispute resolution",
-                      "Multi-chain support",
-                    ]}
-                    position="right"
-                    delay="0.3s"
-                    isVisible={visibleSections.has("roadmap")}
-                  />
-
-                  <RoadmapItem
-                    phase="Phase 3: Q1 2025"
-                    title="Token Launch"
-                    items={[
-                      "LYVR token for staking and governance",
-                      "Cashback and rewards program",
-                      "Liquidity mining incentives",
-                      "DAO treasury establishment",
-                    ]}
-                    position="left"
-                    delay="0.6s"
-                    isVisible={visibleSections.has("roadmap")}
-                  />
-
-                  <RoadmapItem
-                    phase="Phase 4: Q2 2025"
-                    title="Advanced Features"
-                    items={[
-                      "NFT-based reputation system",
-                      "Built-in DEX for crypto swapping",
-                      "Mobile app release",
-                      "Cross-chain interoperability",
-                    ]}
-                    position="right"
-                    delay="0.9s"
-                    isVisible={visibleSections.has("roadmap")}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Waitlist Section */}
         <section id="waitlist" className="py-20 px-4 bg-gradient-to-b from-purple-900/20 to-black" data-animate>
@@ -781,7 +402,7 @@ export default function LyvoraLanding() {
                 <SelectTrigger className="bg-gray-900/50 border-purple-500/30 text-white hover:border-purple-400/50 transition-all duration-300">
                   <SelectValue placeholder="Select your profile" />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-900 border-purple-500/30">
+                <SelectContent className="bg-gray-800 border-purple-500/30">
                   <SelectItem value="buyer">Buyer</SelectItem>
                   <SelectItem value="seller">Seller</SelectItem>
                   <SelectItem value="both">Both Buyer & Seller</SelectItem>
@@ -794,23 +415,31 @@ export default function LyvoraLanding() {
                 <SelectTrigger className="bg-gray-900/50 border-purple-500/30 text-white hover:border-purple-400/50 transition-all duration-300">
                   <SelectValue placeholder="Select your country" />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-900 border-purple-500/30">
+                <SelectContent className="bg-gray-800 border-purple-500/30">
                   <SelectItem value="us">United States</SelectItem>
                   <SelectItem value="uk">United Kingdom</SelectItem>
+                  <SelectItem value="ar">Argentina</SelectItem>
                   <SelectItem value="ca">Canada</SelectItem>
+                  <SelectItem value="br">Brazil</SelectItem>
+                  <SelectItem value="co">Colombia</SelectItem>
                   <SelectItem value="de">Germany</SelectItem>
                   <SelectItem value="fr">France</SelectItem>
+                  <SelectItem value="jp">Japan</SelectItem>
+                  <SelectItem value="nz">New Zealand</SelectItem>
+                  <SelectItem value="sg">Singapore</SelectItem>
                   <SelectItem value="other">Other</SelectItem>
                 </SelectContent>
               </Select>
 
-              <Input
-                type="text"
-                placeholder="If 'Other', write your country"
-                value={country === "other" ? expectations : ""}
-                onChange={(e) => setExpectations(e.target.value)}
-                className="bg-gray-900/50 border-purple-500/30 text-white placeholder:text-gray-400 hover:border-purple-400/50 transition-all duration-300"
-              />
+              {country === "other" && (
+                <Input
+                  type="text"
+                  placeholder="Please specify your country"
+                  value={otherCountry}
+                  onChange={(e) => setOtherCountry(e.target.value)}
+                  className="bg-gray-900/50 border-purple-500/30 text-white placeholder:text-gray-400 hover:border-purple-400/50 transition-all duration-300 animate-fade-in-up"
+                />
+              )}
 
               <Textarea
                 placeholder="What do you expect from Lyvora?"
@@ -840,7 +469,7 @@ export default function LyvoraLanding() {
         </section>
 
         {/* Footer */}
-        <footer className="py-12 px-4 border-t border-purple-500/20" data-animate id="footer">
+        <footer className="py-12 px-4 border-t border-purple-500/20 bg-gradient-to-b from-purple-900/20 to-black" data-animate id="footer">
           <div className="container mx-auto">
             <div
               className={`flex flex-col md:flex-row items-center justify-between ${visibleSections.has("footer") ? "animate-footer-appear" : "opacity-0"}`}
@@ -888,228 +517,6 @@ export default function LyvoraLanding() {
             <ChevronUp className="h-6 w-6 text-white animate-arrow-up" />
           </button>
         )}
-      </div>
-    </div>
-  )
-}
-
-// Enhanced FAQ Item Component
-function FAQItem({ question, answer, delay }: { question: string; answer: string; delay: string }) {
-  const [isOpen, setIsOpen] = useState(false)
-
-  return (
-    <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-      <Card
-        className="bg-gray-900/50 border-purple-500/30 backdrop-blur-sm hover:border-purple-400/50 transition-all duration-300 animate-card-hover"
-        style={{ animationDelay: delay }}
-      >
-        <CollapsibleTrigger asChild>
-          <CardHeader className="cursor-pointer hover:bg-purple-500/5 transition-colors">
-            <div className="flex items-center justify-between">
-              <CardTitle className="text-white text-lg">{question}</CardTitle>
-              {isOpen ? (
-                <ChevronUp className="h-5 w-5 text-purple-400 animate-rotate-180" />
-              ) : (
-                <ChevronDown className="h-5 w-5 text-purple-400 animate-rotate-0" />
-              )}
-            </div>
-          </CardHeader>
-        </CollapsibleTrigger>
-        <CollapsibleContent>
-          <CardContent className="pt-0">
-            <p className="text-gray-300 leading-relaxed animate-fade-in">{answer}</p>
-          </CardContent>
-        </CollapsibleContent>
-      </Card>
-    </Collapsible>
-  )
-}
-
-// Enhanced Feature Card Component
-function FeatureCard({
-  icon: Icon,
-  title,
-  description,
-  features,
-  color,
-  delay,
-}: {
-  icon: LucideIcon
-  title: string
-  description: string
-  features: string[]
-  color: string
-  delay: string
-}) {
-  const getColorClasses = () => {
-    switch (color) {
-      case "red":
-        return "from-red-500 to-red-600 border-red-500/30"
-      case "green":
-        return "from-green-500 to-green-600 border-green-500/30"
-      case "blue":
-        return "from-blue-500 to-blue-600 border-blue-500/30"
-      case "yellow":
-        return "from-yellow-500 to-yellow-600 border-yellow-500/30"
-      case "purple":
-        return "from-purple-500 to-purple-600 border-purple-500/30"
-      case "pink":
-        return "from-pink-500 to-pink-600 border-pink-500/30"
-      default:
-        return "from-purple-500 to-purple-600 border-purple-500/30"
-    }
-  }
-
-  return (
-    <Card
-      className={`bg-gray-900/50 border backdrop-blur-sm h-full hover:scale-105 transition-all duration-300 animate-feature-card ${getColorClasses().split(" ")[1]}`}
-      style={{ animationDelay: delay }}
-    >
-      <CardHeader>
-        <div className="flex items-center mb-4">
-          <div className={`p-2 rounded-lg bg-gradient-to-r ${getColorClasses().split(" ")[0]} mr-3 animate-icon-glow`}>
-            <Icon className="h-6 w-6 text-white" />
-          </div>
-          <CardTitle className="text-white text-lg">{title}</CardTitle>
-        </div>
-        <p className="text-gray-300">{description}</p>
-      </CardHeader>
-      <CardContent>
-        <ul className="space-y-2">
-          {features.map((feature, index) => (
-            <li
-              key={index}
-              className="flex items-start animate-feature-item"
-              style={{ animationDelay: `${Number.parseFloat(delay) + index * 0.1}s` }}
-            >
-              <Check className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0 animate-check-mark" />
-              <span className="text-gray-300 text-sm">{feature}</span>
-            </li>
-          ))}
-        </ul>
-      </CardContent>
-    </Card>
-  )
-}
-
-// Enhanced Work Card Component
-function WorkCard({
-  icon: Icon,
-  title,
-  description,
-  highlight,
-  color,
-  delay,
-}: {
-  icon: LucideIcon
-  title: string
-  description: string
-  highlight: string
-  color: string
-  delay: string
-}) {
-  const getColorClasses = () => {
-    switch (color) {
-      case "purple":
-        return "from-purple-500 to-purple-600 border-purple-500/30"
-      case "yellow":
-        return "from-yellow-500 to-yellow-600 border-yellow-500/30"
-      case "blue":
-        return "from-blue-500 to-blue-600 border-blue-500/30"
-      case "red":
-        return "from-red-500 to-red-600 border-red-500/30"
-      case "green":
-        return "from-green-500 to-green-600 border-green-500/30"
-      case "pink":
-        return "from-pink-500 to-pink-600 border-pink-500/30"
-      default:
-        return "from-purple-500 to-purple-600 border-purple-500/30"
-    }
-  }
-
-  return (
-    <Card
-      className={`bg-gray-900/50 border backdrop-blur-sm h-full hover:scale-105 transition-all duration-300 animate-work-card ${getColorClasses().split(" ")[1]}`}
-      style={{ animationDelay: delay }}
-    >
-      <CardHeader>
-        <div className="flex items-center mb-4">
-          <div className={`p-2 rounded-lg bg-gradient-to-r ${getColorClasses().split(" ")[0]} mr-3 animate-icon-pulse`}>
-            <Icon className="h-6 w-6 text-white" />
-          </div>
-          <CardTitle className="text-white text-lg leading-tight">{title}</CardTitle>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <p className="text-gray-300 mb-4 leading-relaxed">{description}</p>
-        <p className="text-white font-semibold italic animate-highlight-glow">{highlight}</p>
-      </CardContent>
-    </Card>
-  )
-}
-
-// Enhanced Roadmap Item Component
-function RoadmapItem({
-  phase,
-  title,
-  items,
-  position,
-  delay,
-  isVisible,
-}: {
-  phase: string
-  title: string
-  items: string[]
-  position: "left" | "right"
-  delay: string
-  isVisible: boolean
-}) {
-  return (
-    <div className="relative">
-      {/* Enhanced Timeline dot with pulsing animation */}
-      <div
-        className={`absolute left-0 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 border-4 border-black z-10 ${isVisible ? "animate-roadmap-dot" : "opacity-0"}`}
-        style={{ animationDelay: delay }}
-      >
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 animate-ping opacity-75"></div>
-        <div className="absolute inset-1 rounded-full bg-gradient-to-r from-cyan-400 to-purple-400 animate-pulse"></div>
-      </div>
-
-      {/* Content with enhanced animations */}
-      <div
-        className={`md:w-1/2 ${position === "right" ? "md:ml-auto pl-8 md:pl-12" : "pr-8 md:pr-12"} ${isVisible ? "animate-roadmap-card" : "opacity-0"}`}
-        style={{ animationDelay: delay }}
-      >
-        <Card className="bg-gray-900/50 border-purple-500/30 backdrop-blur-sm overflow-hidden hover:border-purple-400/50 transition-all duration-500 hover:scale-105 animate-roadmap-hover">
-          <CardHeader>
-            <Badge
-              className={`mb-2 bg-purple-500/20 text-purple-300 border-purple-500/50 w-fit animate-badge-glow`}
-              style={{ animationDelay: `${Number.parseFloat(delay) + 0.2}s` }}
-            >
-              {phase}
-            </Badge>
-            <CardTitle
-              className="text-white text-xl animate-title-glow"
-              style={{ animationDelay: `${Number.parseFloat(delay) + 0.3}s` }}
-            >
-              {title}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-3">
-              {items.map((item, index) => (
-                <li
-                  key={index}
-                  className="flex items-start animate-roadmap-item"
-                  style={{ animationDelay: `${Number.parseFloat(delay) + 0.4 + index * 0.1}s` }}
-                >
-                  <Check className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0 animate-check-bounce" />
-                  <span className="text-gray-300">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
       </div>
     </div>
   )
