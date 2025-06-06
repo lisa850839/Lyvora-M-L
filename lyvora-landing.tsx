@@ -423,9 +423,7 @@ export default function LyvoraLanding() {
                   <SelectItem value="br">Brazil</SelectItem>
                   <SelectItem value="co">Colombia</SelectItem>
                   <SelectItem value="de">Germany</SelectItem>
-                  <SelectItem value="fr">France</SelectItem>
                   <SelectItem value="jp">Japan</SelectItem>
-                  <SelectItem value="nz">New Zealand</SelectItem>
                   <SelectItem value="sg">Singapore</SelectItem>
                   <SelectItem value="other">Other</SelectItem>
                 </SelectContent>
@@ -489,12 +487,6 @@ export default function LyvoraLanding() {
                 </a>
                 <a href="#" className="text-gray-400 hover:text-purple-400 transition-all duration-300 hover:scale-110">
                   Discord
-                </a>
-                <a href="#" className="text-gray-400 hover:text-purple-400 transition-all duration-300 hover:scale-110">
-                  Telegram
-                </a>
-                <a href="#" className="text-gray-400 hover:text-purple-400 transition-all duration-300 hover:scale-110">
-                  GitHub
                 </a>
               </div>
             </div>
